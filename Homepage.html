@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmable AI - AI-Powered Lead Intelligence</title>
+    <meta name="description" content="Turn every lead into a booked appointment with AI-powered lead intelligence for health, wellness, and fitness businesses.">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-purple: #b7adcfff;
+            --light-bg: #f8f9fb;
+            --text-dark: #1a1a2e;
+            --text-gray: #6b7280;
+            --white: #ffffff;
+            --border-light: #e5e7eb;
+            --teal: #4f646fff;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: white;
+            padding: 16px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary-purple);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-gray);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-dark);
+        }
+
+        .btn-nav {
+            background: var(--primary-purple);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .btn-nav:hover {
+            background: #5a4f7e;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 100px;
+            background: var(--light-bg);
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: white;
+            border: 1px solid var(--border-light);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--primary-purple);
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-size: 56px;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.1;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        .hero-description {
+            font-size: 16px;
+            color: var(--text-gray);
+            max-width: 680px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary-purple);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5a4f7e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(74, 63, 110, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--text-dark);
+            border: 1px solid var(--border-light);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-gray);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 600;
+            text-align: center;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 16px;
+            margin-bottom: 60px;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            background: white;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .problem-card {
+            padding: 32px 24px;
+            background: var(--light-bg);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+
+        .problem-icon {
+            width: 48px;
+            height: 48px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: #4f646fff;
+            font-size: 20px;
+        }
+
+        .problem-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .problem-card p {
+            font-size: 14px;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            background: var(--light-bg);
+        }
+
+        .steps-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 48px;
+            position: relative;
+        }
+
+        .step-number {
+            width: 56px;
+            height: 56px;
+            background: white;
+            border: 2px solid var(--border-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 600;
+            color: #4f646fff;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step:not(:last-child) .step-number::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 48px;
+            background: var(--border-light);
+        }
+
+        .step-content h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            margin-top: 8px;
+        }
+
+        .step-content p {
+            font-size: 15px;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        .step:last-child .step-number {
+            background: #4f646fff;
+            border-color: #4f646fff;
+            color: white;
+        }
+
+        .step:last-child .step-number i {
+            font-size: 24px;
+        }
+
+        /* Industries Section */
+        .industries-section {
+            background: white;
+        }
+
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .industry-card {
+            padding: 32px 24px;
+            background: var(--light-bg);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .industry-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+
+        .industry-icon {
+            width: 48px;
+            height: 48px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #4f646fff;
+        }
+
+        .industry-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .industry-subtitle {
+            font-size: 13px;
+            color: var(--text-gray);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .industry-card p {
+            font-size: 14px;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background:#4f646fff;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta-section .section-title {
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .cta-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-light {
+            background: white;
+            color: var(--text-dark);
+        }
+
+        .btn-light:hover {
+            background: #f3f4f6;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Footer */
+        .footer {
+            background: #535657ff;
+            color: white;
+            padding: 32px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+
+        .footer-logo-icon {
+            width: 28px;
+            height: 28px;
+            background: var(--primary-purple);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer-right {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-right a {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 18px;
+            transition: color 0.2s;
+        }
+
+        .footer-right a:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links a:not(.btn-nav) {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .problem-grid,
+            .industries-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fa-brands fa-superpowers"></i>
+                </div>
+                <span>Cosmable AI</span>
+            </a>
+            <div class="nav-links">
+                <a href="#how-it-works">How It Works</a>
+                <a href="#industries">Industries</a>
+                <a href="mailto:xiaoxin.yu@cosmale.co" class="btn-nav">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">NEXT-GEN LEAD MANAGEMENT</div>
+            <h1 class="hero-title">AI-Powered Lead Intelligence</h1>
+            <p class="hero-subtitle">Turn every lead into a booked appointment</p>
+            <p class="hero-description">
+                Our AI scores every inbound lead in real-time, routing high-intent prospects to 
+                your team instantly — and letting AI handle the rest. Built for health, wellness, and 
+                fitness businesses.
+            </p>
+            <div class="hero-buttons">
+                <a href="mailto:xiaoxin.yu@cosmale.co" class="btn btn-primary">Contact Us</a>
+                <a href="#how-it-works" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <h2 class="section-title">The problem with today's lead management</h2>
+            <p class="section-subtitle">In-person service businesses lose revenue every day to inefficient lead handling.</p>
+            
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    <h3>Leads Slip Through the Cracks</h3>
+                    <p>Your front desk can't respond to every inquiry instantly. After-hours requests go unanswered. High-value leads get the same treatment as tire-kickers.</p>
+                </div>
+                
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Your Team's Time is Precious</h3>
+                    <p>Skilled staff spend hours on calls that never convert. Meanwhile, ready-to-book clients wait in queue behind low-intent browsers.</p>
+                </div>
+                
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Generic Chatbots Fall Short</h3>
+                    <p>Off-the-shelf chatbots can't distinguish a serious lead from a casual question. They lack the intelligence to prioritize and personalize.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How it works</h2>
+            <p class="section-subtitle">From first touch to booked appointment — intelligent routing at every step.</p>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Lead Arrives</h3>
+                        <p>A prospect reaches out via your website, social media, or messaging platform.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>AI Scores Intent</h3>
+                        <p>Our propensity model analyzes dozens of signals — timing, behavior, message content, and more — to score conversion likelihood in real-time.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Smart Routing</h3>
+                        <p>High-propensity leads are instantly routed to your team for personal follow-up. Lower-propensity or after-hours leads are handled by our AI agent.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>AI Agent Engages</h3>
+                        <p>Our conversational AI answers questions, provides information, and can even book appointments — keeping leads warm 24/7.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Conversion & Feedback</h3>
+                        <p>Every interaction feeds back into the model, continuously improving accuracy and your conversion rates over time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section id="industries" class="industries-section">
+        <div class="container">
+            <h2 class="section-title">Built for in-person service businesses</h2>
+            <p class="section-subtitle">Industries where online leads drive real-world appointments.</p>
+            
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>Aesthetics</h3>
+                    <p class="industry-subtitle"></p>
+                    <p>High-value treatments like Botox, fillers, and laser procedures benefit most from prioritized human follow-up. AI handles routine inquiries about pricing and aftercare.</p>
+                </div>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Wellness & Healthcare</h3>
+                    <p class="industry-subtitle"></p>
+                    <p>Sensitive patient interactions are routed to staff when intent is high. AI manages appointment scheduling, insurance questions, and follow-up reminders.</p>
+                </div>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Fitness</h3>
+                    <p class="industry-subtitle"></p>
+                    <p>Convert trial-curious visitors into members faster. AI engages casual browsers with class info while your team focuses on serious sign-ups.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="section-title">Ready to convert more leads?</h2>
+            <p class="section-subtitle">Join forward-thinking health, wellness, and fitness businesses that are already using AI-powered lead intelligence.</p>
+            <div class="cta-buttons">
+                <a href="mailto:xiaoxin.yu@cosmale.co" class="btn btn-outline">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">
+                            <i class="fa-brands fa-superpowers"></i>
+                        </div>
+                        <span>Cosmable AI</span>
+                    </div>
+                    <span class="footer-text">© 2025 Cosmable AI. All rights reserved.</span>
+                </div>
+              </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
